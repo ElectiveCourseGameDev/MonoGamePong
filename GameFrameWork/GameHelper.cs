@@ -1,10 +1,6 @@
 using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Text;
 
-namespace GameFramework
+namespace MonoGamePong.GameFrameWork
 {
     public static class GameHelper
     {

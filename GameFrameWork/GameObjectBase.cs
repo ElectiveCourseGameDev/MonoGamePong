@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using System.Text;
 
-namespace GameFramework
+namespace MonoGamePong.GameFrameWork
 {
     public abstract class GameObjectBase
     {

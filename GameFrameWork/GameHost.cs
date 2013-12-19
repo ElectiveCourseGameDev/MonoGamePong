@@ -1,13 +1,8 @@
-using GameFramework;
-using System;
 using System.Collections.Generic;
-using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Text;
-using System.Xml;
 
-namespace GameFramework
+namespace MonoGamePong.GameFrameWork
 {
     // Derive GameHost from the XNA Game class.
     // Our actual game classes can then derive from GameHost
