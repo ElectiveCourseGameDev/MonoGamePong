@@ -149,7 +149,7 @@ namespace MonoGamePong
                 _p1.BoundingBox.Contains(ballCornerC) || _p1.BoundingBox.Contains(ballCornerD))
             {
                 _ball.flip();
-                _Log.Write(_ball.directionInDegrees.ToString());
+                _Log.Write(_ball.DirectionInDegrees.ToString());
                 //_ball.BallSpeed = 2;
                 _Log.Write("P1 Colision!");
             }
@@ -158,7 +158,7 @@ namespace MonoGamePong
                 _p2.BoundingBox.Contains(ballCornerC) || _p2.BoundingBox.Contains(ballCornerD))
             {
                 _ball.flip();
-                _Log.Write(_ball.directionInDegrees.ToString());
+                _Log.Write(_ball.DirectionInDegrees.ToString());
                 //_ball.BallSpeed = -2;
                 _Log.Write("p2 Colision!");
             }

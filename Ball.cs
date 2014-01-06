@@ -13,7 +13,7 @@ namespace MonoGamePong
 {
     class Ball : SpriteObject
     {
-        public int directionInDegrees = 120;
+        public int DirectionInDegrees = 100;
 
         public float BallSpeed { get; set; }
 
@@ -54,14 +54,19 @@ namespace MonoGamePong
 
         private void moveBall(float ballSpeed)
         {
-            PositionX = PositionX + (float) Math.Sin(directionInDegrees) * ballSpeed;
-            PositionY = PositionY + (float) Math.Cos(directionInDegrees) * ballSpeed;
+            //kører meget langsom mod venstre (270grader)
+          PositionX = PositionX + (float) (Math.Sin(DirectionInDegrees*Math.PI/180) * ballSpeed);
+         
+           // virker tilsyneladende rigtigt?
+            PositionY = PositionY - (float) Math.Cos(DirectionInDegrees*Math.PI/180) * ballSpeed;
+          
         }
 
         public void flip()
         {
-            if (directionInDegrees > 180) directionInDegrees -= 180;
-            else directionInDegrees += 180;
+           // if (DirectionInDegrees > 180) DirectionInDegrees -= 180;
+           // else 
+                DirectionInDegrees += 180;
 
         }
 
@@ -69,7 +74,7 @@ namespace MonoGamePong
 
         private void restart()
         {
-            directionInDegrees = 90;
+            DirectionInDegrees = 90;
             BallSpeed = 2;
         }
 
