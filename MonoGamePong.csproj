@@ -130,6 +130,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ball.cs" />
     <Compile Include="GameFrameWork\BenchmarkObject.cs" />
     <Compile Include="GameFrameWork\GameHelper.cs" />
     <Compile Include="GameFrameWork\GameHost.cs" />
@@ -140,13 +141,20 @@
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Game1.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="PongGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Content\MonoLog.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\player.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="MonoGamePong_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
