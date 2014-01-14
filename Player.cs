@@ -12,10 +12,10 @@ using MonoGamePong.GameFrameWork;
 
 namespace MonoGamePong
 {
-    class Player : SpriteObject
+    public class Player : SpriteObject
     {
 
-        private int _playerSpeed = 2;
+        public int _playerSpeed = 4;
         private KeyboardState currentKeyState; 
         public int Score  { get; set; }
 

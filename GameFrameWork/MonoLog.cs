@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MonoGamePong.GameFrameWork
 {
-    class MonoLog : SpriteObject
+    public class MonoLog : SpriteObject
     {
         //-------------------------------------------------------------------------------------
         // Class variables

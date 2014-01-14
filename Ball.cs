@@ -13,18 +13,23 @@ namespace MonoGamePong
 {
     class Ball : SpriteObject
     {
-        public int DirectionInDegrees = 100;
-
+        public int velocityX;
+        public int velocityY;
+    
         public float BallSpeed { get; set; }
 
         //-------------------------------------------------------------------------------------
         // Class constructors
 
-       
-
         public Ball(GameHost game)
             : base(game)
         {
+            BallSpeed = 0.5f;
+            velocityX = 1;
+            do
+            {
+               velocityY = GameHelper.RandomNext(-2, 2);
+            } while (velocityY == 0);
             SpriteColor = Color.White;
         }
 
@@ -47,35 +52,10 @@ namespace MonoGamePong
 
         public override void Update(GameTime gameTime)
         {
-            moveBall(BallSpeed);
+            PositionX += velocityX * BallSpeed;
+            PositionY += velocityY * BallSpeed;
 
             base.Update(gameTime);
-        }
-
-        private void moveBall(float ballSpeed)
-        {
-            //kører meget langsom mod venstre (270grader)
-          PositionX = PositionX + (float) (Math.Sin(DirectionInDegrees*Math.PI/180) * ballSpeed);
-         
-           // virker tilsyneladende rigtigt?
-            PositionY = PositionY - (float) Math.Cos(DirectionInDegrees*Math.PI/180) * ballSpeed;
-          
-        }
-
-        public void flip()
-        {
-           // if (DirectionInDegrees > 180) DirectionInDegrees -= 180;
-           // else 
-                DirectionInDegrees += 180;
-
-        }
-
-
-
-        private void restart()
-        {
-            DirectionInDegrees = 90;
-            BallSpeed = 2;
         }
 
     }

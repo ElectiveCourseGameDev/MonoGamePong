@@ -15,6 +15,8 @@ namespace MonoGamePong
     {
         GraphicsDeviceManager _graphics;
         SpriteBatch _spriteBatch;
+        private int screenWidth;
+        private int screenHeight;
 
         private Texture2D _redPlayer;
         private Texture2D _playerTexture;
@@ -27,13 +29,16 @@ namespace MonoGamePong
 
         private Ball _ball;
         private KeyboardState currentKeyState;
-        private float _playerSpeed = 2;
+        private float _playerSpeed = 4;
 
         public PongGame()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-          
+            //screenWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            //screenHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            screenWidth = _graphics.PreferredBackBufferWidth;
+            screenHeight = _graphics.PreferredBackBufferHeight;
         }
 
         /// <summary>
@@ -74,7 +79,7 @@ namespace MonoGamePong
             _p1 = new Player(this, new Vector2(50, 50), _playerTexture);
             GameObjects.Add(_p1);
             
-            _p2 = new Player(this, new Vector2(2300, 50), _playerTexture);
+            _p2 = new Player(this, new Vector2(screenWidth*2-70, 50), _playerTexture);
             GameObjects.Add(_p2);
 
             _ball = new Ball(this, new Vector2(1200f, 800f), _ballTexture);
@@ -83,6 +88,13 @@ namespace MonoGamePong
 
             _Log = new MonoLog(this, _logFont, Color.DarkOrange);
             GameObjects.Add(_Log);
+
+            //align to screen
+            _p2.PositionX = screenWidth - 70;
+            _p2.PositionY = screenHeight/2-50;
+            _ball.PositionY = screenHeight/2 - 10;
+            _Log.Write("ScreenWidth: "+screenWidth.ToString());
+            _Log.Write("ScreenHeight: "+screenHeight.ToString());
         }
 
         /// <summary>
@@ -148,39 +160,35 @@ namespace MonoGamePong
             if (_p1.BoundingBox.Contains(ballCornerA) || _p1.BoundingBox.Contains(ballCornerB) ||
                 _p1.BoundingBox.Contains(ballCornerC) || _p1.BoundingBox.Contains(ballCornerD))
             {
-                _ball.flip();
-                _Log.Write(_ball.DirectionInDegrees.ToString());
-                //_ball.BallSpeed = 2;
                 _Log.Write("P1 Colision!");
+                _ball.velocityX *= -1;
             }
 
             if (_p2.BoundingBox.Contains(ballCornerA) || _p2.BoundingBox.Contains(ballCornerB) ||
                 _p2.BoundingBox.Contains(ballCornerC) || _p2.BoundingBox.Contains(ballCornerD))
             {
-                _ball.flip();
-                _Log.Write(_ball.DirectionInDegrees.ToString());
-                //_ball.BallSpeed = -2;
                 _Log.Write("p2 Colision!");
+                _ball.velocityX *= -1;
             }
 
             if (ballCornerA.Y == 0)
             {
-                _ball.PositionY = 1440;
+                _Log.Write("HIT TOP");
+                //_ball.PositionY = 1440;
+                _ball.velocityY *= -1;
             }
 
-            if (ballCornerC.Y == 1440)
+            if (ballCornerC.Y == screenHeight)
             {
-                _ball.PositionY = 0;
+                _Log.Write("HIT BOTTOM");
+               // _ball.PositionY = 0;
+                _ball.velocityY *= -1;
             }
-
-
-
 
             //_Log.Write(_ball.BoundingBox.ToString());
 
             UpdateAll(gameTime);
             base.Update(gameTime);
-
 
         }
 
