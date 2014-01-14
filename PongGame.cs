@@ -27,6 +27,9 @@ namespace MonoGamePong
         private Player _p1;
         private Player _p2;
 
+        private TextObject _p1Score;
+        private TextObject _p2Score;
+
         private Ball _ball;
         private KeyboardState currentKeyState;
         private float _playerSpeed = 4;
@@ -69,7 +72,9 @@ namespace MonoGamePong
             _logFont = Content.Load<SpriteFont>(@"MonoLog");
             
             //load test png
-            _redPlayer = Content.Load<Texture2D>(@"player");
+            //_redPlayer = Content.Load<Texture2D>(@"player");
+
+            
 
             ResetGame();
         }
@@ -88,6 +93,12 @@ namespace MonoGamePong
 
             _Log = new MonoLog(this, _logFont, Color.DarkOrange);
             GameObjects.Add(_Log);
+
+            _p1Score = new TextObject(this, _logFont, new Vector2(screenWidth / 4, 50), "0");
+            GameObjects.Add(_p1Score);
+
+            _p2Score = new TextObject(this, _logFont, new Vector2(screenWidth/4*3, 50), "0");
+            GameObjects.Add(_p2Score);
 
             //align to screen
             _p2.PositionX = screenWidth - 70;
