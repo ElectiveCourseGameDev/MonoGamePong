@@ -172,24 +172,32 @@ namespace MonoGamePong
                 _p1.BoundingBox.Contains(ballCornerC) || _p1.BoundingBox.Contains(ballCornerD))
             {
                 _Log.Write("P1 Colision!");
+                //cahnge ball direction
                 _ball.velocityX *= -1;
+                //increase ball speed
+                _ball.BallSpeed *= 1.02f;
+                _Log.Write("ball speed: " + _ball.BallSpeed.ToString());
             }
 
             if (_p2.BoundingBox.Contains(ballCornerA) || _p2.BoundingBox.Contains(ballCornerB) ||
                 _p2.BoundingBox.Contains(ballCornerC) || _p2.BoundingBox.Contains(ballCornerD))
             {
                 _Log.Write("p2 Colision!");
+                //change ball direction
                 _ball.velocityX *= -1;
+                //increase ball speed
+                _ball.BallSpeed *= 1.02f;
+                _Log.Write("ball speed: " + _ball.BallSpeed.ToString());
             }
 
-            if (ballCornerA.Y == 0)
+            if (ballCornerA.Y <= 0)
             {
                 _Log.Write("HIT TOP");
                 //_ball.PositionY = 1440;
                 _ball.velocityY *= -1;
             }
-
-            if (ballCornerC.Y == screenHeight)
+            
+            if (ballCornerC.Y >= screenHeight)
             {
                 _Log.Write("HIT BOTTOM");
                // _ball.PositionY = 0;
