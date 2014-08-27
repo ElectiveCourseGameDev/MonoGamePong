@@ -152,9 +152,6 @@
     <Content Include="Content\MonoLog.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\player.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="MonoGamePong_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

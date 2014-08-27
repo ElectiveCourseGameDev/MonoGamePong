@@ -22,8 +22,6 @@ namespace MonoGamePong
          public Player(GameHost game)
             : base(game)
         {
-            // Set the default scale and color
-          
             Score = 0;
         }
 
@@ -43,16 +41,6 @@ namespace MonoGamePong
 
         public override void Update(GameTime gameTime)
         {
-            //currentKeyState = Keyboard.GetState();
-            //if (currentKeyState.IsKeyDown(Keys.Up))
-            //{
-            //    PositionY -= _playerSpeed;
-            //}
-
-            //if (currentKeyState.IsKeyDown(Keys.Down))
-            //{
-            //    PositionY += _playerSpeed;
-            //}
             base.Update(gameTime);
         }
     }

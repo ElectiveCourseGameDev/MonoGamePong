@@ -18,7 +18,6 @@ namespace MonoGamePong
         private int screenWidth;
         private int screenHeight;
 
-        private Texture2D _redPlayer;
         private Texture2D _playerTexture;
         private Texture2D _ballTexture;
         private SpriteFont _logFont;
@@ -67,15 +66,10 @@ namespace MonoGamePong
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            _playerTexture = generateTexture2D(30, 200, Color.White);
-            _ballTexture = generateTexture2D(20, 20, Color.White);
+            _playerTexture = generateTexture2D(30, 200, Color.Red); // calls my own method to generate graphics - Yes it would have been easier to use an image!
+            _ballTexture = generateTexture2D(20, 20, Color.Red);
             _logFont = Content.Load<SpriteFont>(@"MonoLog");
             
-            //load test png
-            //_redPlayer = Content.Load<Texture2D>(@"player");
-
-            
-
             ResetGame();
         }
 
