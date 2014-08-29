@@ -156,25 +156,17 @@ namespace MonoGamePong
 
             //collisions detection---------------------------------------------------
 
-            Point ballCornerA = new Point((int) _ball.PositionX, (int) _ball.PositionY);
-            Point ballCornerB = new Point((int) _ball.PositionX + (int) _ball.BoundingBox.Width, (int) _ball.PositionY);
-            Point ballCornerC = new Point((int) _ball.PositionX, (int) _ball.PositionY + _ball.BoundingBox.Height);
-            Point ballCornerD = new Point((int) _ball.PositionX + (int) _ball.BoundingBox.Width,
-                (int) _ball.PositionY + (int) _ball.BoundingBox.Height);
-
-            if (_p1.BoundingBox.Contains(ballCornerA) || _p1.BoundingBox.Contains(ballCornerB) ||
-                _p1.BoundingBox.Contains(ballCornerC) || _p1.BoundingBox.Contains(ballCornerD))
+            if (_p1.BoundingBox.Intersects(_ball.BoundingBox))
             {
                 _Log.Write("P1 Colision!");
-                //cahnge ball direction
+                //change ball direction
                 _ball.velocityX *= -1;
                 //increase ball speed
                 _ball.BallSpeed *= 1.02f;
                 _Log.Write("ball speed: " + _ball.BallSpeed.ToString());
             }
 
-            if (_p2.BoundingBox.Contains(ballCornerA) || _p2.BoundingBox.Contains(ballCornerB) ||
-                _p2.BoundingBox.Contains(ballCornerC) || _p2.BoundingBox.Contains(ballCornerD))
+            if (_p2.BoundingBox.Intersects(_ball.BoundingBox))
             {
                 _Log.Write("p2 Colision!");
                 //change ball direction
@@ -184,14 +176,14 @@ namespace MonoGamePong
                 _Log.Write("ball speed: " + _ball.BallSpeed.ToString());
             }
 
-            if (ballCornerA.Y <= 0)
+            if (_ball.PositionY <= 0)
             {
                 _Log.Write("HIT TOP");
                 //_ball.PositionY = 1440;
                 _ball.velocityY *= -1;
             }
             
-            if (ballCornerC.Y >= screenHeight)
+            if (_ball.PositionY >= screenHeight)
             {
                 _Log.Write("HIT BOTTOM");
                // _ball.PositionY = 0;
